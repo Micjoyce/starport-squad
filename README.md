@@ -8,9 +8,9 @@
 
 ## 实机演示
 
-https://github.com/user-attachments/assets/acdaef10-f910-4493-a4ac-1157dd91e5d5
+https://github.com/user-attachments/assets/da4980f0-e2a9-4d8e-9b64-47a08d6087e4
 
-36 秒原生引擎录制，保留游戏配乐与音效。镜头和操作由脚本驱动，展示当前开发预览画面。
+36 秒原生引擎录制，包含游戏配乐与射击音效，已检测实际音量。镜头和操作由脚本驱动，展示当前开发预览画面。播放器若默认静音，请点击喇叭开启声音。
 
 [视频附件与讨论](https://github.com/Micjoyce/starport-squad/issues/1) · [录制方法](docs/PROMO.md)
 

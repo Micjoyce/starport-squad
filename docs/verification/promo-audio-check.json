@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "programs": [],
+  "stream_groups": [],
+  "streams": [
+    {
+      "codec_name": "h264",
+      "codec_type": "video"
+    },
+    {
+      "codec_name": "aac",
+      "codec_type": "audio",
+      "sample_rate": "48000",
+      "channels": 2
+    }
+  ],
+  "format": {
+    "duration": "36.000000",
+    "size": "7972268"
+  },
+  "mean_volume_db": -21.2,
+  "max_volume_db": -0.2
+}

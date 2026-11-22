@@ -82,6 +82,7 @@ var toast := ""
 var toast_time := 0.0
 var assist := true
 var music_on := true
+var promo_recording := false
 var sfx_on := true
 var low_motion := false
 var sensitivity := .0022
@@ -108,7 +109,8 @@ func _ready() -> void:
  outer_port.game = self
  DisplayServer.window_set_title("星港小队 · STARPORT SQUAD")
  rng.seed = 42031
- test_mode = "--self-test" in OS.get_cmdline_user_args() or "--platform-check" in OS.get_cmdline_user_args() or "--record-promo" in OS.get_cmdline_user_args()
+ promo_recording = "--record-promo" in OS.get_cmdline_user_args()
+ test_mode = "--self-test" in OS.get_cmdline_user_args() or "--platform-check" in OS.get_cmdline_user_args() or promo_recording
  smoke_mode = "--armor-preview" in OS.get_cmdline_user_args() or "--outer-preview" in OS.get_cmdline_user_args() or "--campaign-preview" in OS.get_cmdline_user_args() or "--field-preview" in OS.get_cmdline_user_args() or "--regiment-preview" in OS.get_cmdline_user_args() or "--pets-preview" in OS.get_cmdline_user_args() or "--rival-preview" in OS.get_cmdline_user_args() or "--siege-preview" in OS.get_cmdline_user_args() or "--render-test" in OS.get_cmdline_user_args() or "--ui-test" in OS.get_cmdline_user_args() or "--expedition-preview" in OS.get_cmdline_user_args()
  if not test_mode and not smoke_mode:
   rng.randomize()
@@ -265,12 +267,12 @@ func build_audio() -> void:
  music.stream = load("res://assets/orbital_drift.wav")
  music.bus = "Music"
  add_child(music)
- if not test_mode:
+ if not test_mode or promo_recording:
   music.play()
  apply_audio()
 
 func sound(key: String, volume: float = 1.0) -> void:
- if test_mode:
+ if test_mode and not promo_recording:
   return
  var a = sound_pool[sound_index % sound_pool.size()]
  sound_index += 1

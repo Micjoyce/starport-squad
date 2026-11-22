@@ -18,9 +18,27 @@ func aim_at(point: Vector3) -> void:
  game.player.rotation.y = atan2(-direction.x,-direction.z)
  game.player.camera.rotation.x = atan2(direction.y,Vector2(direction.x,direction.z).length())
 
+func block_live_input(node: Node) -> void:
+ node.set_process_input(false)
+ node.set_process_unhandled_input(false)
+ node.set_process_unhandled_key_input(false)
+ if node is Control:
+  node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+  node.focus_mode = Control.FOCUS_NONE
+ for child in node.get_children():
+  block_live_input(child)
+
 func record() -> void:
  game = load("res://main.tscn").instantiate()
  root.add_child(game)
+ if not game.promo_recording or not game.music.playing:
+  push_error("Promo music did not start; refusing to record a silent video")
+  quit(1)
+  return
+ # Retain scripted action_press() while removing physical key/mouse bindings.
+ for action in InputMap.get_actions():
+  InputMap.action_erase_events(action)
+ block_live_input(game)
  game.rng.seed = 42031
  game.hud.hide()
  overview = Camera3D.new()
@@ -80,6 +98,7 @@ func record() -> void:
    game.hud.hide()
    creator = load("res://creator.tscn").instantiate()
    root.add_child(creator)
+   block_live_input(creator)
    creator.rng.seed = 912
    creator.camera.position = Vector3(32,44,39)
    creator.camera.look_at(Vector3.ZERO)
