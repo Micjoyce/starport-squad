@@ -1,0 +1,45 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+
+PASS three energy cells
+PASS six robots
+PASS eleven sound effects load
+PASS original music loops
+PASS initial magazines
+PASS reachable station A
+PASS reachable station B
+PASS reachable station C
+PASS weapon switch
+PASS reload begins
+PASS reload completes
+PASS firing consumes ammo
+PASS hitscan damages robot
+PASS W moves player forward
+PASS bulkhead collision blocks movement
+PASS space jumps
+PASS jump lands on deck
+PASS empty magazine auto reloads
+PASS switch cancels reload without filling ammo
+PASS shotgun consumes one shell
+PASS shotgun pellets damage robot
+PASS fire rate limits repeated shots
+PASS enemy energy projectile damages shield
+PASS brief damage protection
+PASS shield regenerates after delay
+PASS physical route to station A
+PASS physical route to station B
+PASS physical route to station C
+PASS shield damage
+PASS rescue on shield depleted
+PASS collect all cells
+PASS no duplicate collection
+PASS extraction begins
+PASS extraction stops outside pad
+PASS extraction progresses inside pad
+PASS pause
+PASS pause freezes mission
+PASS resume
+PASS successful extraction
+STARPORT SQUAD — INTEGRATION TEST
+Godot 4.5-stable (official)
+Failures: 0
+

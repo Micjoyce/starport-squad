@@ -1,0 +1,167 @@
+func select_difficulty(value: int) -> void:
+ if mode != "menu":
+  return
+ difficulty = clampi(value,0,2)
+ for enemy in enemies:
+  if is_instance_valid(enemy):
+   enemy.queue_free()
+ enemies.clear()
+ spawn_enemies()
+ save_settings()
+ hud.queue_redraw()
+
+func build_equipment() -> void:
+ var armor_positions = [Vector3(-6,0,20),Vector3(-10,0,12),Vector3(-20,0,-11),Vector3(20,0,-16),Vector3(5,0,-23)]
+ var gun_positions = [Vector3(6,0,20),Vector3(11,0,5),Vector3(-10,0,-17),Vector3(12,0,-23),Vector3(-5,0,-26)]
+ for tier in range(5):
+  add_equipment(armor_positions[tier],"armor",tier)
+  add_equipment(gun_positions[tier],"gun",tier)
+
+func add_equipment(pos: Vector3, kind: String, tier: int, weapon_kind: int = -1) -> void:
+ var root = Node3D.new()
+ world.add_child(root)
+ root.position = Vector3(pos.x,.08,pos.z)
+ var material = F.mat(Gear.COLORS[tier],.7)
+ F.cylinder(root,Vector3(0,.06,0),.65,.08,material,8)
+ var item = Node3D.new()
+ root.add_child(item)
+ item.position.y = .85
+ if kind == "armor":
+  F.box(item,Vector3.ZERO,Vector3(.65,.55,.18),material)
+  for side in [-1,1]:
+   F.box(item,Vector3(side*.40,.13,0),Vector3(.17,.25,.22),material)
+  F.box(item,Vector3(0,0,-.11),Vector3(.16,.20,.04),black)
+ else:
+  var display_gun = Gear.make_weapon(item,0 if weapon_kind<0 else weapon_kind,tier)
+  display_gun.rotation.y = PI/2
+ var label = F.text3d(root,(Gear.SHORT[tier] if kind=="armor" else Gear.NAMES[tier].split(" · ")[0]+"枪械升级"),Vector3(0,1.6,0),23,Gear.COLORS[tier])
+ label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+ equipment.append({"node":root,"item":item,"pos":pos,"kind":kind,"tier":tier,"weapon_kind":weapon_kind,"taken":false})
+
+func nearby_equipment() -> int:
+ var best := -1
+ var best_distance := 2.2
+ for i in range(equipment.size()):
+  var item = equipment[i]
+  if item.taken:
+   continue
+  var distance = player.position.distance_to(item.pos)
+  if distance<best_distance:
+   best_distance = distance
+   best = i
+ return best
+
+func take_equipment(index: int) -> void:
+ var item = equipment[index]
+ if item.taken:
+  return
+ if item.kind=="armor":
+  if item.tier < player.armor_tier:
+   message("已有更高级盔甲 · 保留当前装备",2)
+   return
+  player.equip_armor(item.tier)
+  message("装备 "+Gear.NAMES[item.tier]+"盔甲 · 护盾 "+str(int(player.max_shield())),3)
+ else:
+  var target_weapon: int = player.weapon if item.weapon_kind<0 else item.weapon_kind
+  if item.tier<player.weapon_tiers[target_weapon]:
+   message("已有更高级枪械 · 保留当前装备",2)
+   return
+  if item.weapon_kind>=0:
+   player.switch_weapon(item.weapon_kind)
+  player.upgrade_weapon(item.tier)
+  message(("AK47" if player.weapon==0 else "霰弹枪")+"升级 · "+Gear.NAMES[item.tier]+" · 威力 ×"+str(Gear.POWER[item.tier]),3)
+ item.taken = true
+ item.node.visible = false
+ sound("pickup")
+
+func drop_equipment(pos: Vector3, armor_tier: int, gun_tier: int, weapon_kind: int) -> void:
+ # Two real, separately pickable drops; avoid growing the scene indefinitely.
+ if equipment.size()<50:
+  add_equipment(pos+Vector3(-.65,0,0),"armor",armor_tier)
+  add_equipment(pos+Vector3(.65,0,0),"gun",gun_tier,weapon_kind)
+
+func enemy_shot(bot: Node3D, origin: Vector3, aim: Vector3) -> void:
+ var forward = (aim-origin).normalized()
+ var total_damage := 0.0
+ var pellets = 1 if bot.weapon_kind==0 else 9
+ for pellet in range(pellets):
+  var spread = .008 if bot.weapon_kind==0 else .065
+  var direction = (forward+bot.global_basis.x*rng.randf_range(-spread,spread)+Vector3.UP*rng.randf_range(-spread,spread)).normalized()
+  var q = PhysicsRayQueryParameters3D.create(origin,origin+direction*55,3)
+  var hit = get_world_3d().direct_space_state.intersect_ray(q)
+  var endpoint = origin+direction*40
+  if not hit.is_empty():
+   endpoint = hit.position
+   if hit.collider==player:
+    total_damage += Gear.damage(bot.weapon_kind,bot.weapon_tier,origin.distance_to(endpoint))*(.45 if difficulty==1 else .65)
+  tracer(origin,endpoint,Gear.COLORS[bot.weapon_tier],.055)
+ if total_damage>0:
+  player.damage(total_damage)
+ if origin.distance_to(player.position)<26:
+  sound("ak" if bot.weapon_kind==0 else "shotgun",.28)
+ spark(origin,Gear.COLORS[bot.weapon_tier],2)
+
+func throw_grenade(origin: Vector3, target: Vector3) -> void:
+ var g = Node3D.new()
+ add_child(g)
+ g.position = origin
+ F.sphere(g,Vector3.ZERO,.18,F.mat(Color("27394a")))
+ F.box(g,Vector3.ZERO,Vector3(.38,.06,.12),orange)
+ var ring = MeshInstance3D.new()
+ var mesh = TorusMesh.new()
+ mesh.inner_radius = Gear.GRENADE_RADIUS-.10
+ mesh.outer_radius = Gear.GRENADE_RADIUS
+ mesh.rings = 32
+ mesh.ring_segments = 6
+ ring.mesh = mesh
+ ring.material_override = F.mat(Color("ff7653"),1.5)
+ add_child(ring)
+ var flight := 1.15
+ var landing = Vector3(target.x,.22,target.z)
+ var velocity = (landing-origin)/flight+Vector3.UP*7*flight
+ grenades.append({"node":g,"ring":ring,"velocity":velocity,"fuse":Gear.GRENADE_FUSE,"damage":Gear.GRENADE_BASE_DAMAGE*Gear.GRENADE_MULTIPLIER})
+ sound("switch",.4)
+
+func step_grenades(dt: float) -> void:
+ for i in range(grenades.size()-1,-1,-1):
+  var g = grenades[i]
+  g.fuse -= dt
+  g.velocity.y -= 14*dt
+  var old: Vector3 = g.node.position
+  var next: Vector3 = old+g.velocity*dt
+  var q = PhysicsRayQueryParameters3D.create(old,next,1)
+  var hit = get_world_3d().direct_space_state.intersect_ray(q)
+  if not hit.is_empty():
+   g.node.position = hit.position+hit.normal*.19
+   g.velocity = g.velocity.bounce(hit.normal)*.30
+  else:
+   g.node.position = next
+  var landing = g.node.position
+  landing.y = .10
+  g.ring.position = landing
+  var pulse = .92+sin(g.fuse*16)*.08
+  g.ring.scale = Vector3(pulse,1,pulse)
+  if g.fuse<=0:
+   explode_grenade(g.node.position,g.damage)
+   g.node.queue_free()
+   g.ring.queue_free()
+   grenades.remove_at(i)
+
+func grenade_damage_at(origin: Vector3, amount: float) -> float:
+ var target = player.position+Vector3.UP*.8
+ var distance = origin.distance_to(target)
+ if distance>=Gear.GRENADE_RADIUS:
+  return 0.0
+ var q = PhysicsRayQueryParameters3D.create(origin,target,1)
+ if not get_world_3d().direct_space_state.intersect_ray(q).is_empty():
+  return 0.0
+ return amount*(1.0-.65*distance/Gear.GRENADE_RADIUS)
+
+func explode_grenade(origin: Vector3, amount: float) -> void:
+ var damage = grenade_damage_at(origin,amount)
+ if damage>0:
+  player.damage(damage)
+ spark(origin,Color("ffbd71"),24)
+ var blast = F.sphere(self,origin,.8,F.mat(Color("ffac61"),2.0))
+ effects.append({"node":blast,"life":.18})
+ sound("shotgun",.75)

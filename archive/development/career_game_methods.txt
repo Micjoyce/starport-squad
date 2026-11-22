@@ -1,0 +1,61 @@
+func apply_career() -> void:
+ player.equip_armor(career.equipped.armor)
+ player.weapon_tiers = [career.equipped.ak,career.equipped.sg]
+ for i in range(2):
+  Gear.paint_weapon(player.weapons[i],player.weapon_tiers[i])
+ player.pants.visible = career.green_pants
+
+func equip_owned(kind: String, tier: int) -> void:
+ if career.equip(kind,tier):
+  apply_career()
+  message("装备已穿戴并保存",2)
+ else:
+  message("无法装备：检查库存或存档写入",2)
+
+func open_backpack() -> void:
+ if hud.page=="inventory":
+  close_backpack()
+  return
+ inventory_origin = mode
+ active = false
+ if mode=="playing":
+  mode = "paused"
+ Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+ hud.show_page("inventory")
+
+func close_backpack() -> void:
+ if inventory_origin=="playing":
+  start_game()
+ else:
+  mode = inventory_origin
+  hud.show_page(mode)
+
+func drop_resources(pos: Vector3, amount: int) -> void:
+ if resources.size()>=64:
+  return
+ var root = Node3D.new()
+ world.add_child(root)
+ root.position = Vector3(pos.x,.12,pos.z)
+ var material = F.mat(Color("78ef99"),1)
+ F.box(root,Vector3(0,.20,0),Vector3(.32,.35,.32),material).rotation.y = PI/4
+ var label = F.text3d(root,"资源 +"+str(amount),Vector3(0,.9,0),24,Color("78ef99"))
+ label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+ resources.append({"node":root,"pos":pos,"amount":amount,"taken":false})
+
+func nearby_resource() -> int:
+ for i in range(resources.size()):
+  if not resources[i].taken and player.position.distance_to(resources[i].pos)<2.2:
+   return i
+ return -1
+
+func collect_resource(index: int) -> void:
+ var item = resources[index]
+ if item.taken:
+  return
+ if career.earn(item.amount):
+  item.taken = true
+  item.node.visible = false
+  sound("pickup")
+  message("资源币 +"+str(item.amount)+" · 已永久保存",3)
+ else:
+  message("存档写入失败，资源仍留在原地",3)

@@ -1,0 +1,131 @@
+func refresh_inventory() -> void:
+ show_page("inventory")
+
+func transact(action: String, kind: String, tier: int) -> void:
+ var ok = game.career.buy(kind,tier) if action=="buy" else game.career.sell(kind,tier)
+ inventory_status = ("买入成功 · 已永久保存" if action=="buy" else "出售成功 · 资源币已保存") if ok else "交易未完成 · 请检查余额、库存与价格"
+ refresh_inventory()
+
+func build_inventory() -> void:
+ button("返回 / B",Rect2(1190,88,150,45),func(): game.close_backpack())
+ var titles = ["盔甲","AK47","霰弹枪","技能","外观"]
+ for i in range(5):
+  var tab = i
+  button(titles[i],Rect2(90+i*177,173,164,45),func(): inventory_tab=tab; refresh_inventory())
+ if inventory_tab<3:
+  var kind: String = ["armor","ak","sg"][inventory_tab]
+  for tier in range(5):
+   var t = tier
+   var y = 275+t*82
+   var owned: int = game.career.items[kind][t]
+   var equip_button = button("已装备" if game.career.equipped[kind]==t else "装备",Rect2(605,y,104,43),func(): game.equip_owned(kind,t); refresh_inventory())
+   equip_button.disabled = owned<=0 or game.career.equipped[kind]==t
+   var price: int = game.career.PRICES[t]
+   var buy_button = button("买入",Rect2(723,y,104,43),func(): transact("buy",kind,t))
+   buy_button.disabled = price<0 or game.career.credits<price
+   var sell_button = button("出售",Rect2(841,y,104,43),func(): transact("sell",kind,t))
+   sell_button.disabled = not game.career.can_sell(kind,t)
+ elif inventory_tab==3:
+  for index in range(3):
+   var i = index
+   var unlocked: bool = game.career.skills[i]
+   var b = button("已解锁 · 无限使用" if unlocked else "解锁 · "+str(game.career.SKILL_COSTS[i]),Rect2(705,274+i*133,239,48),func():
+    inventory_status = "技能已永久解锁 · 无冷却、无次数限制" if game.career.unlock(i) else "解锁未完成"
+    refresh_inventory())
+   b.disabled = unlocked or game.career.credits<game.career.SKILL_COSTS[i]
+ else:
+  button("脱下绿色炫彩裤" if game.career.green_pants else "穿上绿色炫彩裤",Rect2(150,431,465,56),func():
+   if game.career.set_pants(not game.career.green_pants):
+    game.player.pants.visible = game.career.green_pants
+   refresh_inventory(),true)
+ build_character_preview()
+
+func build_character_preview() -> void:
+ var container = SubViewportContainer.new()
+ container.position = Vector2(1020,268)
+ container.size = Vector2(290,390)
+ container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+ content.add_child(container)
+ buttons.append(container)
+ var viewport = SubViewport.new()
+ viewport.size = Vector2i(290,390)
+ viewport.own_world_3d = true
+ viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+ container.add_child(viewport)
+ var root = Node3D.new()
+ viewport.add_child(root)
+ var env = WorldEnvironment.new()
+ env.environment = Environment.new()
+ env.environment.background_mode = Environment.BG_COLOR
+ env.environment.background_color = INK
+ env.environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+ env.environment.ambient_light_color = Color.WHITE
+ env.environment.ambient_light_energy = .7
+ root.add_child(env)
+ var light = DirectionalLight3D.new()
+ light.rotation_degrees = Vector3(-35,-45,0)
+ light.light_energy = 1.1
+ root.add_child(light)
+ var camera = Camera3D.new()
+ root.add_child(camera)
+ camera.position = Vector3(2.2,1.65,-3.7)
+ camera.look_at(Vector3(0,.95,0))
+ camera.fov = 38
+ var F = preload("res://scripts/factory.gd")
+ var armor = F.mat(Gear.COLORS[game.career.equipped.armor])
+ var dark = F.mat(Color("1e3545"))
+ F.box(root,Vector3(0,1.24,0),Vector3(.69,.63,.36),armor)
+ F.box(root,Vector3(0,1.77,0),Vector3(.47,.38,.40),armor)
+ F.box(root,Vector3(0,1.80,-.21),Vector3(.34,.09,.03),F.mat(CYAN,1))
+ # The backpack is visible from the three-quarter camera angle.
+ F.box(root,Vector3(0,1.20,.30),Vector3(.52,.62,.27),dark)
+ var trousers: Material = F.mat(Color("485567"))
+ if game.career.green_pants:
+  trousers = ShaderMaterial.new()
+  trousers.shader = load("res://scripts/pants.gdshader")
+ for side in [-1,1]:
+  F.box(root,Vector3(side*.19,.66,0),Vector3(.24,.49,.28),trousers)
+  F.box(root,Vector3(side*.19,.28,-.02),Vector3(.22,.38,.24),trousers)
+  F.box(root,Vector3(side*.19,.08,-.10),Vector3(.26,.14,.43),dark)
+  F.box(root,Vector3(side*.47,1.22,0),Vector3(.23,.53,.24),armor)
+ var gun = Gear.make_weapon(root,0,game.career.equipped.ak)
+ gun.position = Vector3(.38,1.03,-.30)
+ gun.scale = Vector3.ONE*.8
+
+func draw_inventory() -> void:
+ draw_rect(Rect2(0,0,1440,900),Color(.015,.035,.065,.95))
+ panel(Rect2(60,63,1320,775),.96)
+ txt("永久背包",Vector2(90,135),39)
+ txt("资源币  "+str(game.career.credits),Vector2(910,126),27,CYAN)
+ draw_rect(Rect2(90+inventory_tab*177,226,164,3),CYAN)
+ if inventory_tab<3:
+  var kind: String = ["armor","ak","sg"][inventory_tab]
+  txt("装备等级",Vector2(116,257),16,MUTED)
+  txt("库存",Vector2(378,257),16,MUTED)
+  txt("资源币 / 件",Vector2(472,257),16,MUTED)
+  for tier in range(5):
+   var y = 275+tier*82
+   panel(Rect2(90,y-8,880,67),.80)
+   draw_rect(Rect2(90,y-8,5,67),Gear.COLORS[tier])
+   txt(Gear.NAMES[tier],Vector2(114,y+29),22,Gear.COLORS[tier])
+   txt("×"+str(game.career.items[kind][tier]),Vector2(378,y+29),23,WHITE,true)
+   var price: int = game.career.PRICES[tier]
+   txt(str(price) if price>=0 else "待确认",Vector2(474,y+29),19,MUTED)
+  txt("已穿戴的最后一件装备不能出售；重复装备可以卖出。",Vector2(93,714),17,MUTED)
+  txt("白100 / 蓝220 / 黄1045；买卖暂按同价。紫、红与黑甲关系待确认。",Vector2(93,746),16,MUTED)
+ elif inventory_tab==3:
+  var descriptions = ["Q · 向前跃迁 7 米，遇到掩体会停下","F · 立刻恢复当前盔甲的全部护盾","G · 对 8 米内可见机器人释放引力震波"]
+  for i in range(3):
+   panel(Rect2(90,260+i*133,880,111),.85)
+   txt(game.career.SKILLS[i],Vector2(117,300+i*133),27,CYAN)
+   txt(descriptions[i],Vector2(117,339+i*133),18,MUTED)
+  txt("永久解锁后：没有冷却、次数或能量消耗，按一次用一次。",Vector2(93,714),19,CYAN)
+ else:
+  txt("绿色炫彩裤",Vector2(145,322),37,Color("72f09b"))
+  txt("免费拥有 · 绿色流光材质 · 外观选择自动保存",Vector2(145,373),21,MUTED)
+  txt("战斗中向下看可见裤子；右侧为你的装备展示。",Vector2(145,539),18,MUTED)
+ txt("装备展示",Vector2(1086,252),22,CYAN)
+ txt("绿色炫彩裤" if game.career.green_pants else "默认战斗裤",Vector2(1078,702),20,WHITE)
+ txt("装备、资源、技能均自动保存在本机",Vector2(1020,741),14,MUTED)
+ if inventory_status!="":
+  txt(inventory_status,Vector2(93,792),19,CYAN)

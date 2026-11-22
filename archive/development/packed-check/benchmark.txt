@@ -1,0 +1,6 @@
+Rendered benchmark, 600 frames
+Average FPS: 119.0
+p95 frame time: 8.60 ms
+p99 frame time: 10.80 ms
+Draw calls: 696
+Objects: 827

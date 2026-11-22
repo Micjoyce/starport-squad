@@ -1,0 +1,10 @@
+Rendered combat benchmark, 1200 frames
+Scenario: movement, AK47 + shotgun fire, reloads, active robots + grenades where enabled
+Average FPS: 119.2
+p95 frame time: 9.09 ms
+p99 frame time: 10.36 ms
+Draw calls: 1373
+Objects: 1535
+Difficulty: 噩梦
+Initial robots: 10
+Peak simultaneous grenades: 3

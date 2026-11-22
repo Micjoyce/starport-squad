@@ -1,0 +1,99 @@
+ # Verify physical movement, collision, jumping, ammunition rules, and projectile impacts.
+ for enemy in enemies:
+  if is_instance_valid(enemy):
+   enemy.set_physics_process(false)
+ player.position = Vector3(0,.1,23)
+ player.rotation = Vector3.ZERO
+ player.camera.rotation = Vector3.ZERO
+ player.cooldown = 0
+ Input.action_press("forward")
+ for frame in range(30):
+  await get_tree().physics_frame
+ Input.action_release("forward")
+ check(player.position.z<21,"W moves player forward",failures)
+ Input.action_press("back")
+ for frame in range(180):
+  await get_tree().physics_frame
+ Input.action_release("back")
+ check(player.position.z<31.3 and player.position.z>30,"bulkhead collision blocks movement",failures)
+ for frame in range(15):
+  await get_tree().physics_frame
+ Input.action_press("jump")
+ await get_tree().physics_frame
+ await get_tree().physics_frame
+ Input.action_release("jump")
+ var jump_height: float = player.position.y
+ for frame in range(10):
+  await get_tree().physics_frame
+ check(player.position.y>jump_height+.2,"space jumps",failures)
+ for frame in range(70):
+  await get_tree().physics_frame
+ check(player.is_on_floor(),"jump lands on deck",failures)
+ player.ammo[0] = 0
+ player.cooldown = 0
+ player.reload_left = 0
+ player.shoot()
+ check(player.reload_left>0 and player.ammo[0]==0,"empty magazine auto reloads",failures)
+ player.switch_weapon(1)
+ check(player.reload_left==0,"switch cancels reload without filling ammo",failures)
+ player.position = Vector3(0,.1,23)
+ player.camera.rotation = Vector3.ZERO
+ player.rotation = Vector3.ZERO
+ var close_bot = spawn_enemy(Vector3(0,.1,19))
+ close_bot.set_physics_process(false)
+ player.ammo[1] = 8
+ player.cooldown = 0
+ await get_tree().physics_frame
+ await get_tree().physics_frame
+ player.shoot()
+ check(player.ammo[1]==7,"shotgun consumes one shell",failures)
+ check(close_bot.hp<100,"shotgun pellets damage robot",failures)
+ var after_shot: int = player.ammo[1]
+ player.shoot()
+ check(player.ammo[1]==after_shot,"fire rate limits repeated shots",failures)
+ for enemy in enemies:
+  if is_instance_valid(enemy):
+   enemy.collision_layer = 0
+ player.hurt_cooldown = 0
+ player.shield = 100
+ player.shield_delay = 10
+ launch_bolt(player.camera.global_position+Vector3(0,0,-2),Vector3.BACK)
+ for frame in range(20):
+  await get_tree().physics_frame
+ check(player.shield<100,"enemy energy projectile damages shield",failures)
+ player.hurt_cooldown = 0
+ player.damage(5)
+ var shield_before: float = player.shield
+ player.damage(5)
+ check(player.shield==shield_before,"brief damage protection",failures)
+ player.shield_delay = 0
+ for frame in range(20):
+  await get_tree().physics_frame
+ check(player.shield>shield_before,"shield regenerates after delay",failures)
+ # Walk complete grid paths using the same W + Shift input as a player.
+ player.position = Vector3(0,.1,23)
+ player.velocity = Vector3.ZERO
+ player.reload_left = 0
+ for item in pickups:
+  var route = find_path(player.position,item.pos)
+  var walk_ok = true
+  for waypoint in route:
+   var goal = Vector3(waypoint.x,player.position.y,waypoint.y)
+   var frames = 0
+   while Vector2(player.position.x-goal.x,player.position.z-goal.z).length()>.35 and frames<90:
+    goal.y = player.position.y
+    player.look_at(goal,Vector3.UP)
+    Input.action_press("forward")
+    Input.action_press("sprint")
+    await get_tree().physics_frame
+    frames += 1
+   if frames>=90:
+    walk_ok = false
+    break
+  Input.action_release("forward")
+  Input.action_release("sprint")
+  check(walk_ok and player.position.distance_to(item.pos)<2,"physical route to station "+item.letter,failures)
+ # Restore collision state before the rest of the mission tests.
+ for enemy in enemies:
+  if is_instance_valid(enemy) and enemy.hp>0:
+   enemy.collision_layer = 4

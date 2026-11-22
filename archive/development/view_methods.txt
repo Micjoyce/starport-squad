@@ -1,0 +1,60 @@
+func refresh_body() -> void:
+ if not is_instance_valid(body_model):
+  return
+ var material: Material = rainbow_material if armor_tier==5 else armor_material
+ for part in body_model.get_meta("armor_parts"):
+  part.material_override = material
+ for i in range(2):
+  var model_gun = body_model.get_meta("guns")[i]
+  model_gun.visible = i==weapon
+  Gear.paint_weapon(model_gun,weapon_tiers[i])
+ body_model.get_meta("coat").visible = game.career.operator_coat
+ for w in weapons:
+  for part in w.get_children():
+   if part.has_meta("armor"):
+    part.material_override = material
+
+func set_view(enabled: bool, persist: bool = true) -> bool:
+ if persist and not game.career.set_view(enabled):
+  return false
+ third_person = enabled
+ gun.visible = not third_person
+ update_view()
+ return true
+
+func update_view() -> void:
+ if not third_person:
+  camera.position = Vector3(0,1.58,0)
+  if is_instance_valid(body_model):
+   body_model.visible = false
+  return
+ var eye = global_transform*Vector3(0,1.58,0)
+ var offset = camera.basis.z*3.6+camera.basis.x*.55+Vector3.UP*.18
+ var motion = global_basis*offset
+ var query = PhysicsShapeQueryParameters3D.new()
+ var shape = SphereShape3D.new()
+ shape.radius = .20
+ query.shape = shape
+ query.transform = Transform3D(Basis.IDENTITY,eye)
+ query.motion = motion
+ query.collision_mask = 1
+ var fractions = get_world_3d().direct_space_state.cast_motion(query)
+ var fraction = fractions[0] if fractions.size()>0 else 1.0
+ camera.position = Vector3(0,1.58,0)+offset*maxf(0,fraction-.015)
+ body_model.visible = camera.position.distance_to(Vector3(0,1.58,0))>.65
+ for w in body_model.get_meta("guns"):
+  w.rotation.x = camera.rotation.x
+
+func muzzle_position() -> Vector3:
+ if third_person:
+  return body_model.get_meta("guns")[weapon].to_global(Vector3(0,0,-.7))
+ return flash.global_position
+
+func coat_heal() -> bool:
+ if not game.active or not game.career.operator_coat:
+  return false
+ shield = max_shield()
+ shield_delay = 0
+ game.spark(global_position+Vector3.UP,Color("6affb3"),5)
+ game.sound("pickup",.25)
+ return true

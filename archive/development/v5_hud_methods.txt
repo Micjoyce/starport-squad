@@ -1,0 +1,134 @@
+func inventory_kind() -> String:
+ return ["armor","ak","sg","pants"][inventory_tab]+("+" if inventory_big else "")
+
+func build_inventory() -> void:
+ button("返回 / B",Rect2(1190,88,150,45),func(): game.close_backpack())
+ var titles = ["盔甲","主武器","副武器","裤装","技能","外观"]
+ for i in range(6):
+  var tab = i
+  button(titles[i],Rect2(90+i*150,173,138,45),func(): inventory_tab=tab; refresh_inventory())
+ if inventory_tab<4:
+  button("当前：大型" if inventory_big else "当前：小型",Rect2(665,94,210,42),func(): inventory_big=not inventory_big; refresh_inventory())
+  var kind = inventory_kind()
+  var base = kind.trim_suffix("+")
+  for tier in range(6):
+   var t = tier
+   var y = 275+t*69
+   var owned: int = game.career.items[kind][t]
+   var worn: bool = game.career.equipped[base]==t and game.career.sizes[base]==int(inventory_big)
+   var equip_button = button("已装备" if worn else "装备",Rect2(605,y,104,43),func(): game.equip_owned(kind,t); refresh_inventory())
+   equip_button.disabled = owned<=0 or worn
+   var price: int = game.career.price(kind,t)
+   var buy_button = button("买入",Rect2(723,y,104,43),func(): transact("buy",kind,t))
+   buy_button.disabled = game.career.credits<price
+   var sell_button = button("出售",Rect2(841,y,104,43),func(): transact("sell",kind,t))
+   sell_button.disabled = not game.career.can_sell(kind,t)
+  var cup = button("售世界杯 · 5000",Rect2(690,759,270,40),func():
+   game.career.sell_trophy()
+   refresh_inventory())
+  cup.disabled = game.career.trophies<=0 or game.career.wins<=0
+ elif inventory_tab==4:
+  for index in range(3):
+   var i = index
+   var unlocked: bool = game.career.skills[i]
+   var b = button("已解锁 · 无限使用" if unlocked else "解锁 · "+str(game.career.SKILL_COSTS[i]),Rect2(705,274+i*133,239,48),func():
+    inventory_status = "技能已永久解锁" if game.career.unlock(i) else "资源不足"
+    refresh_inventory())
+   b.disabled = unlocked or game.career.credits<game.career.SKILL_COSTS[i]
+ else:
+  button("裤装："+["绿色炫彩","彩色防护长裤","战术防护泳裤"][game.career.pants_style],Rect2(150,412,465,56),func():
+   game.career.set_pants_style((game.career.pants_style+1)%3)
+   game.player.update_pants_equipment()
+   refresh_inventory(),true)
+  button("脱下干员风衣" if game.career.operator_coat else "穿上干员风衣",Rect2(150,482,465,56),func():
+   game.career.set_coat(not game.career.operator_coat)
+   game.player.refresh_body()
+   refresh_inventory())
+  button("切换为第一人称" if game.player.third_person else "切换为第三人称",Rect2(150,552,465,56),func():
+   game.player.set_view(not game.player.third_person)
+   refresh_inventory())
+ build_character_preview()
+ if inventory_tab in [1,2]:
+  var slot: String = "ak" if inventory_tab==1 else "sg"
+  var selector = OptionButton.new()
+  selector.position = Vector2(1020,735)
+  selector.size = Vector2(290,35)
+  selector.add_theme_font_override("font",font)
+  selector.add_theme_font_size_override("font_size",17)
+  for model in range(8):
+   selector.add_item(Gear.MODEL_NAMES[model]+(" · 已有" if model in game.career.owned_models else " · "+str(Gear.MODEL_COSTS[model])))
+  selector.selected = game.career.models[slot]
+  selector.item_selected.connect(func(model):
+   if game.career.select_model(slot,model):
+    game.apply_career()
+    inventory_status = "型号已装备并保存"
+   else:
+    inventory_status = "资源不足，未解锁型号"
+   refresh_inventory())
+  content.add_child(selector)
+  buttons.append(selector)
+
+func draw_inventory() -> void:
+ draw_rect(Rect2(0,0,1440,900),Color(.015,.035,.065,.95))
+ panel(Rect2(60,63,1320,775),.96)
+ txt("永久背包",Vector2(90,135),39)
+ txt("资源币  "+str(game.career.credits),Vector2(910,126),27,CYAN)
+ draw_rect(Rect2(90+inventory_tab*150,226,138,3),CYAN)
+ if inventory_tab<4:
+  var kind = inventory_kind()
+  var base = kind.trim_suffix("+")
+  txt("品质与等级",Vector2(116,257),16,MUTED)
+  txt("库存",Vector2(378,257),16,MUTED)
+  txt("买入 / 售出",Vector2(472,257),16,MUTED)
+  for tier in range(6):
+   var y = 275+tier*69
+   panel(Rect2(90,y-8,880,67),.80)
+   draw_rect(Rect2(90,y-8,5,67),Gear.COLORS[tier])
+   txt(Gear.loot_name(base,tier,inventory_big),Vector2(114,y+29),23,Gear.COLORS[tier])
+   txt("×"+str(game.career.items[kind][tier]),Vector2(378,y+29),23,WHITE,true)
+   var value = str(game.career.price(kind,tier))
+   if base=="armor" and tier==5:
+    value += "/"+str(game.career.resale(kind,tier))
+   txt(value,Vector2(472,y+29),15,MUTED)
+  txt("装备的最后一件不可直接卖出，先换穿其他装备即可。",Vector2(93,714),16,MUTED)
+  txt("小彩虹甲买10555 / 卖10554；大型为基础价格的两倍。",Vector2(93,745),16,MUTED)
+  txt("大红珍宝 · 世界奖杯 ×"+str(game.career.trophies),Vector2(93,786),21,ORANGE)
+ elif inventory_tab==4:
+  var descriptions = ["C · 向前跃迁 7 米，遇到掩体会停下","F · 立刻恢复当前盔甲的全部护盾","G · 对 8 米内可见机器人释放引力震波"]
+  for i in range(3):
+   panel(Rect2(90,260+i*133,880,111),.85)
+   txt(game.career.SKILLS[i],Vector2(117,300+i*133),27,CYAN)
+   txt(descriptions[i],Vector2(117,339+i*133),18,MUTED)
+  txt("彩虹甲额外技能：Q 开启 9999 护盾，无需解锁费用。",Vector2(93,714),19,CYAN)
+ else:
+  txt("干员装扮",Vector2(145,322),37,Color("72f09b"))
+  txt("彩虹裤、六色防护裤、战术泳裤与治疗风衣",Vector2(145,373),20,MUTED)
+  txt("H 无限治疗 · V 切换人称 · 裤装页穿戴颜色",Vector2(145,650),18,MUTED)
+ txt("装备展示",Vector2(1086,252),22,CYAN)
+ txt("干员治疗风衣" if game.career.operator_coat else "战斗装扮",Vector2(1078,702),20,WHITE)
+ if not inventory_tab in [1,2]:
+  txt("装备、资源、技能均自动保存在本机",Vector2(1020,741),14,MUTED)
+ if inventory_status!="":
+  txt(inventory_status,Vector2(93,815),17,CYAN)
+
+func build_chest() -> void:
+ button("全部领取并存档 / E",Rect2(490,669,460,60),func(): game.expedition.claim_chest(),true)
+ button("暂不领取 / Esc",Rect2(490,746,460,48),func(): game.close_backpack())
+
+func draw_chest() -> void:
+ draw_rect(Rect2(0,0,1440,900),Color(.015,.035,.065,.87))
+ panel(Rect2(410,110,620,715),.97)
+ var chest = game.expedition.chests[game.expedition.current_chest]
+ txt(chest.name,Vector2(455,170),35,ORANGE)
+ txt("打开箱子后领取，战利品会永久保存",Vector2(455,213),19,MUTED)
+ var row = 0
+ for item in chest.payload:
+  var kind = item.kind.trim_suffix("+")
+  var name = Gear.loot_name(kind,item.tier,item.kind.ends_with("+"))
+  if int(item.get("model",-1))>=0:
+   name += " / "+Gear.MODEL_NAMES[item.model]
+  txt(name,Vector2(455,272+row*52),23,Gear.COLORS[item.tier])
+  row += 1
+ txt("资源币 +"+str(chest.money)+"   手榴弹 +"+str(chest.grenades),Vector2(455,535),23,CYAN)
+ if chest.cups>0:
+  txt("大红珍宝：世界奖杯 ×"+str(chest.cups),Vector2(455,587),24,ORANGE)

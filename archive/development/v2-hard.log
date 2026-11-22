@@ -1,0 +1,14 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M5 Pro
+
+Rendered combat benchmark, 1200 frames
+Scenario: movement, AK47 + shotgun fire, reloads, active robots + grenades where enabled
+Average FPS: 119.5
+p95 frame time: 8.33 ms
+p99 frame time: 8.39 ms
+Draw calls: 893
+Objects: 1054
+Difficulty: 困难
+Initial robots: 8
+Peak simultaneous grenades: 2
+

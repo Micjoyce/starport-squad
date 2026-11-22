@@ -1,0 +1,19 @@
+# Generated caches and local operating-system files
+.DS_Store
+**/.godot/
+**/__pycache__/
+*.pyc
+# Local engines, duplicate builds, backups and personal runtime data
+/work/
+*.app/
+*.zip
+*.pck
+*.exe
+*.dmg
+.env
+.env.*
+!.env.example
+# Runtime test output (historical evidence is retained under archive)
+/outputs/StarportSquad/test-results.txt
+/outputs/StarportSquad/benchmark.txt
+/test-output/

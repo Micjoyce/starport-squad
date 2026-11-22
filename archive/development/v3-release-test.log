@@ -1,0 +1,132 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+
+PASS three energy cells
+PASS six robots
+PASS eleven sound effects load
+PASS original music loops
+PASS initial magazines
+PASS reachable station A
+PASS reachable station B
+PASS reachable station C
+PASS weapon switch
+PASS reload begins
+PASS reload completes
+PASS firing consumes ammo
+PASS hitscan damages robot
+PASS W moves player forward
+PASS bulkhead collision blocks movement
+PASS space jumps
+PASS jump lands on deck
+PASS empty magazine auto reloads
+PASS switch cancels reload without filling ammo
+PASS shotgun consumes one shell
+PASS shotgun pellets damage robot
+PASS fire rate limits repeated shots
+PASS enemy energy projectile damages shield
+PASS brief damage protection
+PASS shield regenerates after delay
+PASS physical route to station A
+PASS physical route to station B
+PASS physical route to station C
+PASS shield damage
+PASS rescue on shield depleted
+PASS collect all cells
+PASS no duplicate collection
+PASS extraction begins
+PASS extraction stops outside pad
+PASS extraction progresses inside pad
+PASS pause
+PASS pause freezes mission
+PASS resume
+PASS successful extraction
+PASS armor capacity tier 1
+PASS armor mitigation tier 1
+PASS visible gun and armor color tier 1
+PASS armor capacity tier 2
+PASS armor mitigation tier 2
+PASS visible gun and armor color tier 2
+PASS armor capacity tier 3
+PASS armor mitigation tier 3
+PASS visible gun and armor color tier 3
+PASS armor capacity tier 4
+PASS armor mitigation tier 4
+PASS visible gun and armor color tier 4
+PASS armor capacity tier 5
+PASS armor mitigation tier 5
+PASS visible gun and armor color tier 5
+PASS red is strongest for BOTH gun types
+PASS red gun fires faster
+PASS gun tiers stored independently
+PASS both weapons can reach maximum
+PASS reachable armor loot tier 1
+PASS reachable gun loot tier 1
+PASS reachable armor loot tier 2
+PASS reachable gun loot tier 2
+PASS reachable armor loot tier 3
+PASS reachable gun loot tier 3
+PASS reachable armor loot tier 4
+PASS reachable gun loot tier 4
+PASS reachable armor loot tier 5
+PASS reachable gun loot tier 5
+PASS E picks up armor tier 2
+PASS E picks up armor tier 3
+PASS E picks up armor tier 4
+PASS E picks up armor tier 5
+PASS E picks up gun tier 2
+PASS E picks up gun tier 3
+PASS E picks up gun tier 4
+PASS E picks up gun tier 5
+PASS robot drops armor AND its actual gun
+PASS lower armor is stored without downgrading red armor
+PASS pickup robot gun preserves gun type and tier
+PASS actual robot defeat generates two equipment drops
+PASS defeated robot cannot duplicate loot
+PASS enemy count in 简单
+PASS robots use shared AK47 / shotgun models in 简单
+PASS simple robots do NOT throw grenades
+PASS enemy count in 困难
+PASS robots use shared AK47 / shotgun models in 困难
+PASS AI throws real grenade in 困难
+PASS robot AK47 hits player and consumes ammo in 困难
+PASS robot shotgun pellets hit player in 困难
+PASS enemy count in 噩梦
+PASS robots use shared AK47 / shotgun models in 噩梦
+PASS ALL nightmare robots have red max-level guns
+PASS nightmare reinforcements also have max guns
+PASS AI throws real grenade in 噩梦
+PASS robot AK47 hits player and consumes ammo in 噩梦
+PASS robot shotgun pellets hit player in 噩梦
+PASS grenade damage is base 20 times 10
+PASS pause freezes grenade fuse and flight
+PASS grenade fuse advances in gameplay
+PASS nearby grenade has high blast damage
+PASS outside blast radius is safe
+PASS cargo cover blocks explosion
+PASS red armor survives actual grenade blast
+PASS fuse expiration detonates and removes grenade
+PASS new career grants starter gear and unlimited dash
+PASS insufficient funds cannot buy or alter inventory
+PASS buy item deducts correct credits and adds ownership
+PASS sell earned duplicate returns credits
+PASS cannot sell last equipped starter armor
+PASS ambiguous red armor pricing cannot transact
+PASS red armor remains owned even while price is pending
+PASS unlock repair deducts one-time cost
+PASS unlocked skill cannot charge twice
+PASS insufficient funds cannot unlock advanced skill
+PASS all three skills can be permanently unlocked
+PASS disk save reload preserves wallet inventory skills clothing and wins
+PASS atomic save leaves no unfinished temp file
+PASS invalid save is protected from overwrite
+PASS new-session equipment and green pants apply to real player
+PASS resource pickup pays once and persists
+PASS locked ability cannot be used
+PASS repair can repeat without cooldown charges or currency cost
+PASS unlimited dash still collides with bulkhead
+PASS unlimited shockwave actually defeats nearby robot
+PASS earned progress survives another reload after gameplay
+PASS mission reward cannot be duplicated by repeated completion
+STARPORT SQUAD — INTEGRATION TEST
+Godot 4.5-stable (official)
+Failures: 0
+

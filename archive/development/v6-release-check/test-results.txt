@@ -1,0 +1,3 @@
+STARPORT SQUAD — INTEGRATION TEST
+Godot 4.5-stable (official)
+Failures: 0

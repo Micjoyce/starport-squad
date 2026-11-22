@@ -1,0 +1,150 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mexport[22m | Started Exporting for macOS (3 steps)[39m[0m
+[   0% ] [90m[1mexport[22m | Creating app bundle[39m[0m
+[  25% ] [90m[1mexport[22m | Making PKG[39m[0m
+[   0% ] [90m[1msavepack[22m | Started Packing (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ak.wav-f522a0b0fe6349519005b465922d0aed.sample[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/ak.wav.import[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/bolt.wav-67cdfb19de8a6487b923fee1d19134fd.sample[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://assets/bolt.wav.import[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/break.wav-faf51cb4092e7be74eb6fac245311b7a.sample[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://assets/break.wav.import[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/campaign_keyart.png-c77edc78c5eb600321bfee722a07b5dc.ctex[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://assets/campaign_keyart.png.import[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hit.wav-094de5d7e9ff6457899262f6412d21e8.sample[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://assets/hit.wav.import[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hurt.wav-9fcbd4cde8bca31a54a1a8ca0a10a71c.sample[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/hurt.wav.import[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/icon.svg-56083ea2a1f1a4f1e49773bdc6d7826c.ctex[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://assets/icon.svg.import[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal.wav-0da7278a8fb93ed429a32b1dfb2e90b6.sample[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://assets/metal.wav.import[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/NotoSansSC.ttf-9070e328d0e0ba0fced9b20fb26da9d5.fontdata[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://assets/NotoSansSC.ttf.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/orbital_drift.wav-6f98654a01adccd94cfdf171ab9ab550.sample[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/orbital_drift.wav.import[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pickup.wav-cfde5bfd9ba44dc659558aa4ba5b2574.sample[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://assets/pickup.wav.import[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/reload.wav-1816abb503d175899b4dd306c0b000ca.sample[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://assets/reload.wav.import[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/shield.wav-b0b4c3834b003704590f2a6952439805.sample[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://assets/shield.wav.import[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/shock.wav-35de188bbbb5f45d47a1464a462ef08a.sample[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/shock.wav.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/shotgun.wav-190322424cae7fc15a010af9128a1942.sample[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/shotgun.wav.import[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/step.wav-cc87de89b1a2ed01688a3a39c79bf989.sample[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://assets/step.wav.import[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/switch.wav-03c1f224bc177c745d2be776ce4404dc.sample[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://assets/switch.wav.import[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/win.wav-924761e11ca98d70704cf88deb10fe22.sample[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/win.wav.import[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://scripts/arsenal.gdc[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://scripts/bulkhead.gdshader[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://scripts/campaign.gdc[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://scripts/campaign_checks.gdc[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://scripts/campaign_ui.gdc[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://scripts/career.gdc[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://scripts/career_checks.gdc[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://scripts/command.gdc[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://scripts/command_checks.gdc[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://scripts/companions.gdc[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://scripts/creator.gdc[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://scripts/deck.gdshader[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://scripts/drone.gdc[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://scripts/expedition.gdc[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://scripts/expedition_checks.gdc[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://scripts/factory.gdc[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://scripts/field_checks.gdc[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://scripts/field_kit.gdc[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://scripts/field_update_checks.gdc[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://scripts/fortifications.gdc[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://scripts/game.gdc[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://scripts/gear.gdc[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://scripts/gear_checks.gdc[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://scripts/hud.gdc[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://scripts/operative.gdc[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://scripts/operative_checks.gdc[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://scripts/outer_port.gdc[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://scripts/pants.gdshader[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://scripts/pet.gdc[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://scripts/player.gdc[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://scripts/port_art.gdc[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://scripts/pulse_charge.gdc[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://scripts/rainbow.gdshader[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://scripts/regiments.gdc[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://scripts/regiment_checks.gdc[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://scripts/rival.gdc[39m[0m
+[  80% ] [90m[1msavepack[22m | Storing File: res://scripts/rival_checks.gdc[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://scripts/siege_checks.gdc[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://scripts/space.gdshader[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/tactics.gdc[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://scripts/upgrade_checks.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicle.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicles.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/wardrobe.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-8774600cb4a47225e53fa2961bd35a32-creator.scn[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3070c538c03ee49b7677ff960a3f5195-main.scn[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/OFL-NotoSansSC.txt[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/arsenal.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/campaign.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/campaign_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/campaign_ui.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/career.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/career_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/command.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/command_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/companions.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/creator.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/drone.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/expedition.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/expedition_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/factory.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/field_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/field_kit.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/field_update_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/fortifications.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/game.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/gear.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/gear_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/hud.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/operative.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/operative_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/outer_port.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/pet.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/player.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/port_art.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/pulse_charge.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/regiments.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/regiment_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/rival.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/rival_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/siege_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/tactics.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/upgrade_checks.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicle.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicles.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/wardrobe.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://creator.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://default_bus_layout.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://main.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/icon.svg[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m
+[  75% ] [90m[1mexport[22m | Making ZIP[39m[0m
+[92m[ DONE ][39m [1mexport[22m
+[0m

@@ -1,0 +1,300 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+
+PASS three energy cells
+PASS six robots
+PASS eleven sound effects load
+PASS original music loops
+PASS initial magazines
+PASS reachable station A
+PASS reachable station B
+PASS reachable station C
+PASS weapon switch
+PASS reload begins
+PASS reload completes
+PASS firing consumes ammo
+PASS hitscan damages robot
+PASS W moves player forward
+PASS bulkhead collision blocks movement
+PASS space jumps
+PASS jump lands on deck
+PASS empty magazine auto reloads
+PASS switch cancels reload without filling ammo
+PASS shotgun consumes one shell
+PASS shotgun pellets damage robot
+PASS fire rate limits repeated shots
+PASS enemy energy projectile damages shield
+PASS brief damage protection
+PASS shield regenerates after delay
+PASS physical route to station A
+PASS physical route to station B
+PASS physical route to station C
+PASS shield damage
+PASS rescue on shield depleted
+PASS collect all cells
+PASS no duplicate collection
+PASS extraction begins
+PASS extraction stops outside pad
+PASS extraction progresses inside pad
+PASS pause
+PASS pause freezes mission
+PASS resume
+PASS successful extraction
+PASS armor capacity tier 1
+PASS armor mitigation tier 1
+PASS visible gun and armor color tier 1
+PASS armor capacity tier 2
+PASS armor mitigation tier 2
+PASS visible gun and armor color tier 2
+PASS armor capacity tier 3
+PASS armor mitigation tier 3
+PASS visible gun and armor color tier 3
+PASS armor capacity tier 4
+PASS armor mitigation tier 4
+PASS visible gun and armor color tier 4
+PASS armor capacity tier 5
+PASS armor mitigation tier 5
+PASS visible gun and armor color tier 5
+PASS red guns remain stronger than gold for both types
+PASS red gun fires faster
+PASS gun tiers stored independently
+PASS both weapons can reach maximum
+PASS reachable armor loot tier 1
+PASS reachable gun loot tier 1
+PASS reachable armor loot tier 1
+PASS reachable gun loot tier 1
+PASS reachable pants loot tier 1
+PASS reachable armor loot tier 2
+PASS reachable gun loot tier 2
+PASS reachable armor loot tier 2
+PASS reachable gun loot tier 2
+PASS reachable pants loot tier 2
+PASS reachable armor loot tier 3
+PASS reachable gun loot tier 3
+PASS reachable armor loot tier 3
+PASS reachable gun loot tier 3
+PASS reachable pants loot tier 3
+PASS reachable armor loot tier 4
+PASS reachable gun loot tier 4
+PASS reachable armor loot tier 4
+PASS reachable gun loot tier 4
+PASS reachable pants loot tier 4
+PASS reachable armor loot tier 5
+PASS reachable gun loot tier 5
+PASS reachable armor loot tier 5
+PASS reachable gun loot tier 5
+PASS reachable pants loot tier 5
+PASS reachable armor loot tier 6
+PASS reachable gun loot tier 6
+PASS reachable armor loot tier 6
+PASS reachable gun loot tier 6
+PASS reachable pants loot tier 6
+PASS E picks up armor tier 2
+PASS E picks up armor tier 3
+PASS E picks up armor tier 4
+PASS E picks up armor tier 5
+PASS E picks up gun tier 2
+PASS E picks up gun tier 3
+PASS E picks up gun tier 4
+PASS E picks up gun tier 5
+PASS robot drops armor AND its actual gun
+PASS lower armor is stored without downgrading red armor
+PASS pickup robot gun preserves gun type and tier
+PASS actual soldier defeat generates a closed loot chest
+PASS defeated soldier cannot duplicate chest
+PASS enemy count in 简单
+PASS robots use shared AK47 / shotgun models in 简单
+PASS simple robots do NOT throw grenades
+PASS enemy count in 困难
+PASS robots use shared AK47 / shotgun models in 困难
+PASS AI throws real grenade in 困难
+PASS robot AK47 hits player and consumes ammo in 困难
+PASS robot shotgun pellets hit player in 困难
+PASS enemy count in 噩梦
+PASS robots use shared AK47 / shotgun models in 噩梦
+PASS ALL nightmare robots have red max-level guns
+PASS nightmare reinforcements also have max guns
+PASS AI throws real grenade in 噩梦
+PASS robot AK47 hits player and consumes ammo in 噩梦
+PASS robot shotgun pellets hit player in 噩梦
+PASS grenade damage is base 20 times 10
+PASS pause freezes grenade fuse and flight
+PASS grenade fuse advances in gameplay
+PASS nearby grenade has high blast damage
+PASS outside blast radius is safe
+PASS cargo cover blocks explosion
+PASS red armor survives actual grenade blast
+PASS fuse expiration detonates and removes grenade
+PASS new career grants starter gear and unlimited dash
+PASS insufficient funds cannot buy or alter inventory
+PASS buy item deducts correct credits and adds ownership
+PASS sell earned duplicate returns credits
+PASS cannot sell last equipped starter armor
+PASS insufficient credits cannot buy a high-value red armor
+PASS red armor ownership and equipment persist
+PASS unlock repair deducts one-time cost
+PASS unlocked skill cannot charge twice
+PASS insufficient funds cannot unlock advanced skill
+PASS all three skills can be permanently unlocked
+PASS disk save reload preserves wallet inventory skills clothing and wins
+PASS atomic save leaves no unfinished temp file
+PASS invalid save is protected from overwrite
+PASS new-session equipment and green pants apply to real player
+PASS resource pickup pays once and persists
+PASS locked ability cannot be used
+PASS repair can repeat without cooldown charges or currency cost
+PASS unlimited dash still collides with bulkhead
+PASS unlimited shockwave actually defeats nearby robot
+PASS earned progress survives another reload after gameplay
+PASS mission reward cannot be duplicated by repeated completion
+PASS v0.3 save migrates without losing credits equipment or wins
+PASS old save receives free healing coat and first-person default
+PASS rainbow armor costs exactly 10555
+PASS rainbow armor resale is exactly 10554
+PASS rainbow armor is strongest above red
+PASS rainbow armor applies real stats and animated material
+PASS coat heals 20 consecutive times with no cooldown or resource cost
+PASS unequipped coat cannot grant healing
+PASS equipped operator coat is visible on character
+PASS third-person uses full character and shoulder camera
+PASS third-person crosshair and muzzle ray actually hit robot
+PASS third-person camera sphere stops before bulkhead
+PASS switching back restores first-person gun and eye position
+PASS rainbow loot upgrades previously worn red armor
+PASS view coat and rainbow ownership survive disk reload
+PASS rainbow armor base health is exactly 1119
+PASS Q raises rainbow health to exactly 9999
+PASS coat healing respects the 9999 maximum
+PASS non-rainbow armor cannot activate 9999
+PASS rainbow resale is purchase price minus one
+PASS large red armor is a separate owned item
+PASS large armor has its own real capacity bonus
+PASS rainbow gun can be unlocked and selected
+PASS rainbow gun has a real equipped model
+PASS AK47M1LW can be unlocked and selected
+PASS AK47M1LW changes actual player weapon and magazine
+PASS lower-quality loot unlocks its gun model without replacing the stronger equipped gun
+PASS small gun loot cannot downgrade the same-color large gun
+PASS switching armor size at the same tier updates and fills capacity
+PASS AK47M1LW ranks first even against other maximum-level guns
+PASS rainbow gun exceeds ordinary maximum-level sniper damage
+PASS rainbow pants use the real animated rainbow shader
+PASS protective shorts add real damage mitigation
+PASS random field contains small and large weapons of every color
+PASS random spawn positions vary and are navigable
+PASS player grenade consumes inventory and creates a friendly projectile
+PASS player grenade explosion actually damages an enemy
+PASS defeated soldier creates a physical loot chest
+PASS opening a loot chest shows contents and pauses combat
+PASS claiming a chest grants and saves its resource reward
+PASS the same chest cannot be claimed twice
+PASS super nightmare has 20 soldiers matching player armor plus one leader
+PASS leader wears rainbow armor and maximum gun with 999 core health
+PASS portal remains locked before three energy cells
+PASS super-nightmare leader must be defeated before portal opens
+PASS leader chest grants a World Cup trophy and AK47M1LW
+PASS portal loads a second technology region with exactly twice the ground area
+PASS second region repopulates objectives and random loot
+PASS portal preserves player equipment and weapon selection
+PASS expanded second-region floor has real collision beyond the first-region boundary
+PASS second-region navigation matches scaled physical coordinates
+PASS player can physically move on the second-region floor
+PASS second region completes successfully after objectives and leader
+PASS World Cup treasure can be sold after success
+PASS returning to loot after victory cannot duplicate the mission reward
+PASS new guns large quality and rainbow pants survive disk reload
+PASS castle starts small white and has twelve ordered levels
+PASS castle upgrade level 1
+PASS castle upgrade level 2
+PASS castle upgrade level 3
+PASS castle upgrade level 4
+PASS castle upgrade level 5
+PASS castle upgrade level 6
+PASS castle upgrade level 7
+PASS castle upgrade level 8
+PASS castle upgrade level 9
+PASS castle upgrade level 10
+PASS castle upgrade level 11
+PASS maximum castle cannot consume more currency
+PASS castle level survives save data restoration
+PASS legacy save defaults to free ordinary castle
+PASS recruitment rejects insufficient currency without spawning
+PASS recruitment atomically pays for exactly ten allies
+PASS opposing army reinforces in a ten-soldier wave
+PASS existing squad prevents duplicate recruitment charge
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS ally faction and collision remain separate
+PASS allied soldier physically follows the moving leader
+PASS third-person switching preserves recruited squad
+PASS first-person switching preserves visible world allies
+PASS nearby player uses knife without spending ammunition
+PASS nearby opposing soldier switches to damaging knife
+PASS allied gunfire damages opposing army without friendly fire
+PASS enemy grenades can damage recruited soldiers
+PASS upgraded castle wall physically blocks projectile raycasts
+PASS gun intervals reduced thirty percent for faster fire
+PASS victory grants exactly one million coins
+PASS repeated victory cannot duplicate million-coin payout
+PASS enemy has a distinct complete fortified castle
+PASS opposing castles occupy separate ends of the battlefield
+PASS enemy castle walls also block actual bullet raycasts
+PASS navigation connects both castles through open gateways
+PASS player can physically traverse the battlefield and enemy castle gate
+PASS siege squad recruitment remains available
+PASS defend order anchors the squad to home castle instead of leader
+PASS guard physically remains at home while leader moves away
+PASS attack order restores leader-following anchor
+PASS guard physically leaves castle and follows leader after attack command
+PASS castle guard selects an invading enemy while leader is far away
+PASS friendly guard contests and prevents enemy capture of home core
+PASS unprotected home castle develops enemy occupation pressure
+PASS returning leader also stops enemy occupation progress
+PASS home warning clears after invaders leave
+PASS army elimination alone no longer wins the siege
+PASS living defenders block enemy-core capture
+PASS cleared enemy core starts timed occupation without instant victory
+PASS pause freezes castle occupation timer
+PASS leaving enemy core causes occupation progress to decay
+PASS a recruited soldier can occupy the cleared enemy core
+PASS super-nightmare leader must be defeated before castle capture
+PASS capturing enemy castle wins and grants one million coins
+PASS captured castle cannot duplicate victory reward
+PASS enemy holding an undefended home core ends the siege in defeat
+PASS losing the home castle preserves earned permanent currency
+PASS ordinary enemies mirror player's large armor, shorts and coat setting
+PASS changing player outfit updates already-spawned enemies visually
+PASS mirroring equipment preserves damage fraction instead of fully healing enemies
+PASS reinforcements inherit the current outfit immediately
+PASS super-hard is a fifth selectable difficulty
+PASS super-hard gives player actual large rainbow armor
+PASS temporary rainbow pants provide their real defense bonus
+PASS temporary super-hard loadout does not grant or overwrite saved inventory
+PASS super-hard spawns twenty large-rainbow soldiers and exactly one elite commander
+PASS super-hard can recruit a friendly squad
+PASS all ten friendly soldiers also wear large rainbow equipment
+PASS elite defeat starts one ten-second respawn and creates only one loot box
+PASS pause freezes elite respawn timer
+PASS elite stays absent until respawn countdown ends
+PASS elite returns with restored health after countdown
+PASS living elite cannot be duplicated by extra timer updates
+PASS elite respawn waits while enemy core is being captured
+PASS elite never respawns on top of a player inside its castle
+PASS elite can respawn repeatedly without a life limit
+PASS elite selects a poorly defended opposing castle for attack
+PASS elite avoids rushing a heavily guarded opposing core
+PASS elite prioritizes defense when its castle is threatened
+PASS damaged or reloading elite chooses reachable cover that blocks enemy sight
+PASS healthy elite strafes on navigable ground during visible combat
+PASS finished matches never respawn another commander
+PASS leaving super-hard restores the player's saved gear
+STARPORT SQUAD — INTEGRATION TEST
+Godot 4.5-stable (official)
+Failures: 0
+
