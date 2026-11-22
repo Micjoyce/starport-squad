@@ -1,8 +1,8 @@
 # Windows 游戏与开发交接
 
-直接游玩：在私有仓库 [0.16.1 Release](https://github.com/Micjoyce/starport-squad/releases/tag/v0.16.1) 下载 `StarportSquad-Windows-x64-0.16.1.zip`，完整解压后双击 `StarportSquad.exe`。
+直接游玩：在仓库 [0.16.1 Release](https://github.com/Micjoyce/starport-squad/releases/tag/v0.16.1) 下载 `StarportSquad-Windows-x64-0.16.1.zip`，完整解压后双击 `StarportSquad.exe`。
 
-使用有私有仓库读取权限的 GitHub 账号：
+克隆公开仓库：
 
 ```powershell
 git clone https://github.com/micjoyce/starport-squad.git
@@ -48,7 +48,7 @@ macOS/Linux 也能运行同一脚本交叉导出 Windows，但应省略 `--verif
 
 ## 给另一台电脑 Codex 的 prompt
 
-> 请接续开发这个私有 Godot 4.5 Standard / GDScript 项目“星港小队”。先读根目录 AGENTS.md、README.md、docs/STATUS.md 和工程中的 CREATOR.md。唯一当前工程是 outputs/StarportSquad/project.godot，版本 0.16.1。保留中文 UI，科幻工业和太空主题，以适合小朋友的非血腥表现制作。先运行工程并建立 Windows 验证基线，检查五档及随机难度、战役检查点、创造模式、背包、装备、存档和基本战斗。修复真实报错，记录可复现步骤、机器配置和帧率。不要运行 archive 中历史生成器覆盖当前工程；不要把历史 483 项通过当作最新版回归结论。当前没有真实联机，没有玩家驾驶机甲，程序几何美术尚需升级。按正常商业游戏流程逐步提升操作、战斗反馈、关卡、UI、音频、美术和性能，每次先交付一段完整可玩体验并验证，再扩展功能。请区分已实现与计划，不宣称已经达到 3A 成品。持续把修改、测试证据和开发状态提交到当前私有仓库，未经要求不要更改可见性或公开素材。
+> 请接续开发这个公开 Godot 4.5 Standard / GDScript 项目“星港小队”。先读根目录 AGENTS.md、README.md、docs/STATUS.md 和工程中的 CREATOR.md。唯一当前工程是 outputs/StarportSquad/project.godot，版本 0.16.1。保留中文 UI，科幻工业和太空主题，以适合小朋友的非血腥表现制作。先运行工程并建立 Windows 验证基线，检查五档及随机难度、战役检查点、创造模式、背包、装备、存档和基本战斗。修复真实报错，记录可复现步骤、机器配置和帧率。不要运行 archive 中历史生成器覆盖当前工程；不要把历史 483 项通过当作最新版回归结论。当前没有真实联机，没有玩家驾驶机甲，程序几何美术尚需升级。按正常商业游戏流程逐步提升操作、战斗反馈、关卡、UI、音频、美术和性能，每次先交付一段完整可玩体验并验证，再扩展功能。请区分已实现与计划，不宣称已经达到 3A 成品。持续把修改、测试证据和开发状态提交到当前公开仓库，不要提交凭据或个人存档，新增素材先核对分发权限。
 
 ## Codex 项目
 

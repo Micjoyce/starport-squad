@@ -108,7 +108,7 @@ func _ready() -> void:
  outer_port.game = self
  DisplayServer.window_set_title("星港小队 · STARPORT SQUAD")
  rng.seed = 42031
- test_mode = "--self-test" in OS.get_cmdline_user_args() or "--platform-check" in OS.get_cmdline_user_args()
+ test_mode = "--self-test" in OS.get_cmdline_user_args() or "--platform-check" in OS.get_cmdline_user_args() or "--record-promo" in OS.get_cmdline_user_args()
  smoke_mode = "--armor-preview" in OS.get_cmdline_user_args() or "--outer-preview" in OS.get_cmdline_user_args() or "--campaign-preview" in OS.get_cmdline_user_args() or "--field-preview" in OS.get_cmdline_user_args() or "--regiment-preview" in OS.get_cmdline_user_args() or "--pets-preview" in OS.get_cmdline_user_args() or "--rival-preview" in OS.get_cmdline_user_args() or "--siege-preview" in OS.get_cmdline_user_args() or "--render-test" in OS.get_cmdline_user_args() or "--ui-test" in OS.get_cmdline_user_args() or "--expedition-preview" in OS.get_cmdline_user_args()
  if not test_mode and not smoke_mode:
   rng.randomize()
@@ -204,7 +204,7 @@ func _ready() -> void:
  vehicles.build()
  if "--platform-check" in OS.get_cmdline_user_args():
   call_deferred("run_platform_checks")
- elif test_mode:
+ elif test_mode and not "--record-promo" in OS.get_cmdline_user_args():
   call_deferred("run_tests")
  elif get_tree().has_meta("retry_campaign"):
   get_tree().remove_meta("retry_campaign")

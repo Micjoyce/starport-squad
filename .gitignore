@@ -21,3 +21,7 @@
 # Cross-platform build products and downloaded build tools
 /dist/
 /.tools/
+
+# Promo recordings are hosted as GitHub issue attachments
+/outputs/*.mp4
+/outputs/*.avi

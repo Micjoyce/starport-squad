@@ -1,6 +1,26 @@
 # 星港小队 · Starport Squad
 
-Godot 4.5 / GDScript 科幻工业风 3D 射击游戏。当前归档版本 **0.16.1**，包含战役、自由战斗和创造模式。这是持续开发中的原型，尚未达到商品化或 3A 成品质量。
+在环形行星下夺回星港：步枪突击、屋顶狙击、指挥小队，或在创造模式部署士兵、机甲与炮台。
+
+使用 Godot 4.5 / GDScript 制作的科幻工业风 3D 射击游戏，支持第一 / 第三人称。当前为 **0.16.1 开发预览**，Windows 与 macOS 共用一套工程。
+
+[下载 Windows x64](https://github.com/Micjoyce/starport-squad/releases/tag/v0.16.1) · [下载 macOS 预览](https://github.com/Micjoyce/starport-squad/releases/tag/v0.16.0) · [反馈问题](https://github.com/Micjoyce/starport-squad/issues)
+
+## 实机演示
+
+https://github.com/user-attachments/assets/acdaef10-f910-4493-a4ac-1157dd91e5d5
+
+36 秒原生引擎录制，保留游戏配乐与音效。镜头和操作由脚本驱动，展示当前开发预览画面。
+
+[视频附件与讨论](https://github.com/Micjoyce/starport-squad/issues/1) · [录制方法](docs/PROMO.md)
+
+## 目前可以玩什么
+
+- **星港战役**：与小队会合、防守登陆区、突破外环、夺取核心。
+- **自由战斗**：选择难度，使用步枪、霰弹枪、重型狙击枪等装备；切换第一 / 第三人称。
+- **创造模式**：在 100×100 米场地部署双方兵种、AI 机甲与炮台，开战、训练、锻造和保存场景。
+
+项目持续开发中；当前没有真实联网匹配，机甲为 AI 单位。已实现内容与待办详见 [开发状态](docs/STATUS.md)。
 
 ## 快速运行
 
@@ -9,7 +29,7 @@ Godot 4.5 / GDScript 科幻工业风 3D 射击游戏。当前归档版本 **0.16
 3. 等待素材导入，按 F6 运行当前场景或 F5 运行主场景。
 4. 启动平板界面选择简单、困难、噩梦、超级噩梦、超级困难，或随机难度，然后进入主菜单。
 
-Windows 开发与交接见 [docs/WINDOWS.md](docs/WINDOWS.md)，当前状态见 [docs/STATUS.md](docs/STATUS.md)。Windows 和 macOS 共用当前工程。[下载 Windows x64 游戏](https://github.com/Micjoyce/starport-squad/releases/tag/v0.16.1)。Windows 一键打包与自动构建见上述 Windows 文档；历史 macOS 包及源工程快照保留在私有仓库 Releases 中。
+Windows 开发与交接见 [docs/WINDOWS.md](docs/WINDOWS.md)，当前状态见 [docs/STATUS.md](docs/STATUS.md)。Windows 和 macOS 共用当前工程。[下载 Windows x64 游戏](https://github.com/Micjoyce/starport-squad/releases/tag/v0.16.1)。Windows 一键打包与自动构建见上述 Windows 文档；历史 macOS 包及源工程快照保留在仓库 Releases 中。
 
 ## 目录
 
@@ -48,4 +68,4 @@ godot --headless --path outputs/StarportSquad res://creator.tscn --quit-after 10
 
 ## 素材与权限
 
-Noto Sans SC 字体授权见 `outputs/StarportSquad/assets/OFL-NotoSansSC.txt`。音乐和音效的生成代码保留在工程内。主菜单美术含 AI 生成图像。此私有仓库未授予其他代码或素材开源许可；商业发布前需完成素材来源、商标和发行合规审查。
+Noto Sans SC 字体授权见 `outputs/StarportSquad/assets/OFL-NotoSansSC.txt`。音乐和音效的生成代码保留在工程内。主菜单美术含 AI 生成图像。仓库已公开供浏览与协作，目前未指定项目代码和自有素材的开源许可证。第三方素材仍按各自许可证使用；历史 Godot 引擎参考代码保留其 MIT 许可声明。
