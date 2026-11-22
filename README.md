@@ -9,7 +9,7 @@ Godot 4.5 / GDScript 科幻工业风 3D 射击游戏。当前归档版本 **0.16
 3. 等待素材导入，按 F6 运行当前场景或 F5 运行主场景。
 4. 启动平板界面选择简单、困难、噩梦、超级噩梦、超级困难，或随机难度，然后进入主菜单。
 
-Windows 开发与交接见 [docs/WINDOWS.md](docs/WINDOWS.md)，当前状态见 [docs/STATUS.md](docs/STATUS.md)。Windows 和 macOS 共用当前工程。Windows 一键打包与自动构建见上述 Windows 文档；历史 macOS 包及源工程快照保留在私有仓库 Releases 中。
+Windows 开发与交接见 [docs/WINDOWS.md](docs/WINDOWS.md)，当前状态见 [docs/STATUS.md](docs/STATUS.md)。Windows 和 macOS 共用当前工程。[下载 Windows x64 游戏](https://github.com/Micjoyce/starport-squad/releases/tag/v0.16.1)。Windows 一键打包与自动构建见上述 Windows 文档；历史 macOS 包及源工程快照保留在私有仓库 Releases 中。
 
 ## 目录
 

@@ -1,4 +1,6 @@
-# Windows 开发交接
+# Windows 游戏与开发交接
+
+直接游玩：在私有仓库 [0.16.1 Release](https://github.com/Micjoyce/starport-squad/releases/tag/v0.16.1) 下载 `StarportSquad-Windows-x64-0.16.1.zip`，完整解压后双击 `StarportSquad.exe`。
 
 使用有私有仓库读取权限的 GitHub 账号：
 

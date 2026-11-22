@@ -17,7 +17,7 @@
 
 ## 测试证据
 
-0.16.1 的 Windows 原生构建结果和日志将在完成后记录。新增 `--platform-check` 在源工程与 Windows release 导出包使用相同显式检查，不依赖 assert。
+0.16.1 已在 GitHub Windows runner 上完成原生 release 导出与导出包功能检查。构建提交 `9a71553`，运行记录：[Windows game #45036575481](https://github.com/Micjoyce/starport-squad/actions/runs/45036575481)。`--platform-check` 在 macOS 源工程和 Windows release 导出包使用相同显式检查，不依赖 assert。检查通过覆盖难度、资源、战斗启动、人称切换、存档和创造模式的核心流程。当前仍有退出时资源释放警告，不代表已经完成完整回归或人工画面/音频/性能验收。
 
 - 0.16：五个手动难度和随机选择检查通过；本次重新运行断言通过，但退出时仍有 ObjectDB/资源未释放警告，需后续排查。历史日志 `archive/development/v16/check.log`。
 - 0.15：创造模式生成、升级、锻造、保存及读取检查通过；未完成完整回归和帧率基准。
