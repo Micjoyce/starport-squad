@@ -1,6 +1,6 @@
 # 星港小队 · Starport Squad
 
-Godot 4.5 / GDScript 科幻工业风 3D 射击游戏。当前归档版本 **0.16.0**，包含战役、自由战斗和创造模式。这是持续开发中的原型，尚未达到商品化或 3A 成品质量。
+Godot 4.5 / GDScript 科幻工业风 3D 射击游戏。当前归档版本 **0.16.1**，包含战役、自由战斗和创造模式。这是持续开发中的原型，尚未达到商品化或 3A 成品质量。
 
 ## 快速运行
 
@@ -9,7 +9,7 @@ Godot 4.5 / GDScript 科幻工业风 3D 射击游戏。当前归档版本 **0.16
 3. 等待素材导入，按 F6 运行当前场景或 F5 运行主场景。
 4. 启动平板界面选择简单、困难、噩梦、超级噩梦、超级困难，或随机难度，然后进入主菜单。
 
-Windows 开发与交接见 [docs/WINDOWS.md](docs/WINDOWS.md)，当前状态见 [docs/STATUS.md](docs/STATUS.md)。可运行的 macOS 安装包及源工程快照放在本私有仓库的 Releases 中。
+Windows 开发与交接见 [docs/WINDOWS.md](docs/WINDOWS.md)，当前状态见 [docs/STATUS.md](docs/STATUS.md)。Windows 和 macOS 共用当前工程。Windows 一键打包与自动构建见上述 Windows 文档；历史 macOS 包及源工程快照保留在私有仓库 Releases 中。
 
 ## 目录
 
@@ -17,6 +17,8 @@ Windows 开发与交接见 [docs/WINDOWS.md](docs/WINDOWS.md)，当前状态见 
 - `outputs/*.png`：历次实机截图，部分反映旧版本。
 - `outputs/*.md` 和工程中的说明：原始版本说明与测试记录，按其中版本阅读。
 - `tests/`：可重跑的启动难度检查。
+- `tools/`：跨平台 Windows 打包脚本和 CI 官方工具安装器。
+- `.github/workflows/windows.yml`：Windows 原生构建与导出包功能检查。
 - `archive/development/`：历史开发脚本、补丁生成器和测试日志，仅用于追溯；不要当作当前工程入口运行。
 - `docs/`：开发状态、Windows 接续 prompt 和交接说明。
 

@@ -17,3 +17,7 @@
 /outputs/StarportSquad/test-results.txt
 /outputs/StarportSquad/benchmark.txt
 /test-output/
+
+# Cross-platform build products and downloaded build tools
+/dist/
+/.tools/

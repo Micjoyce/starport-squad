@@ -1,0 +1,44 @@
+name: Windows game
+on:
+  push:
+    branches: [main]
+    paths:
+      - outputs/StarportSquad/**
+      - tools/**
+      - .github/workflows/windows.yml
+  pull_request:
+    paths:
+      - outputs/StarportSquad/**
+      - tools/**
+      - .github/workflows/windows.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install verified Godot 4.5 editor and templates
+        run: python tools/install_windows_godot.py
+      - name: Build and check exported Windows game
+        run: python tools/build_windows.py --godot .tools/Godot_v4.5-stable_win64_console.exe --verify
+      - name: Upload playable Windows package
+        uses: actions/upload-artifact@v4
+        with:
+          name: StarportSquad-Windows-x64
+          path: |
+            dist/StarportSquad-Windows-x64-0.16.1.zip
+            dist/SHA256SUMS-Windows.txt
+          if-no-files-found: error
+      - name: Upload verification logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows-verification
+          path: dist/*.log
+          if-no-files-found: ignore
